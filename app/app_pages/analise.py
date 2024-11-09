@@ -1,7 +1,7 @@
 import streamlit as st
 from streamlit_echarts import st_echarts
 import streamlit_antd_components as sac
-from streamlit_extras.dataframe_explorer import dataframe_explorer
+
 import sys
 from pathlib import Path
 
@@ -10,6 +10,7 @@ if DIR_ROOT not in sys.path:
     sys.path.append(DIR_ROOT)
 
 from utils.create_card import Cards
+from utils.dataframe_exp import dataframe_explorer
 
 
 def analise_page(df):
@@ -70,7 +71,7 @@ def analise_page(df):
         df["LINK"] = df.apply(
             lambda row: generate_google_link(row["Marca"], row["Modelo"]), axis=1
         )
-        filtered_df = dataframe_explorer(df, case=False)
+        filtered_df = dataframe_explorer(df, case=False, key="geral")
         st.dataframe(
             filtered_df,
             use_container_width=True,
@@ -449,7 +450,7 @@ Alguns exemplos de aparelhos eletrodomésticos que recebem a etiqueta de eficiê
     df_origem["LINK"] = df_origem.apply(
         lambda row: generate_google_link(row["Marca"], row["Modelo"]), axis=1
     )
-    filtered_df = dataframe_explorer(df_origem, case=False)
+    filtered_df = dataframe_explorer(df_origem, case=False, key="clas_energe")
     st.dataframe(
         filtered_df,
         use_container_width=True,
