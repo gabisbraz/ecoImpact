@@ -14,7 +14,9 @@ from utils.footer import footer_page
 def sobre_nos_page():
     footer_page()
 
-    with open("assets/sobre_o_projeto_page_vector.svg", "rb") as svg_file:
+    with open(
+        Path(DIR_ROOT, "assets/sobre_o_projeto_page_vector.svg"), "rb"
+    ) as svg_file:
         svg_base64 = base64.b64encode(svg_file.read()).decode("utf-8")
 
     cols = st.columns(2)
