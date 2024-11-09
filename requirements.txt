@@ -5,3 +5,4 @@ streamlit_echarts
 streamlit_antd_components
 streamlit_extras
 pandas
+openpyxl
