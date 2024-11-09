@@ -1,4 +1,4 @@
-streamlit
+streamlit==1.38.0
 streamlit_dynamic_filters
 streamlit_navigation_bar
 streamlit_echarts
