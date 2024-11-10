@@ -221,7 +221,7 @@ class DynamicFilters:
     def display_df(self, **kwargs):
         """Renders the filtered dataframe in the main area."""
         # Display filtered DataFrame
-        return st.dataframe(self.filter_df(), **kwargs)
+        return st.dataframe(self.filter_df(), **kwargs), self.filter_df()
 
 
 class DynamicFiltersHierarchical(DynamicFilters):

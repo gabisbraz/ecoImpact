@@ -50,7 +50,7 @@ def eletrodomesticos_page():
 
     # Exibe os filtros
     dynamic_filters.display_filters(location="columns", num_columns=3)
-    df_index = dynamic_filters.display_df(
+    df_index, df_filtered = dynamic_filters.display_df(
         use_container_width=True,
         hide_index=True,
         on_select="rerun",  # Aciona a atualização do estado ao selecionar
@@ -66,7 +66,7 @@ def eletrodomesticos_page():
     if len(df_index.get("selection", {}).get("rows", [])) != 0:
         # Captura as linhas selecionadas no df_index
         selected_rows = df_index.get("selection", {}).get("rows", [])
-        df_selected = df_index.iloc[selected_rows]
+        df_selected = df_filtered.iloc[selected_rows]
 
         with col_btn[2]:
             if st.button(
