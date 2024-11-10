@@ -38,7 +38,7 @@ def eletrodomesticos_page():
 
     # Seção de filtro para selecionar eletrodomésticos
     st.markdown(
-        "#### 1. Utilize os filtros para selecionar os eletrodomésticos que deseja analisar"
+        "# 1. Utilize os filtros para selecionar os eletrodomésticos que deseja analisar"
     )
 
     # Cria filtros dinâmicos para o DataFrame original
@@ -79,7 +79,7 @@ def eletrodomesticos_page():
                     ).drop_duplicates()
 
     # Exibe o DataFrame de eletrodomésticos selecionados para análise
-    st.markdown("#### 2. Visualize os eletrodomésticos escolhidos para análise")
+    st.markdown("# 2. Visualize os eletrodomésticos escolhidos para análise")
     df_selected_for_analysis = st.session_state.df_user
 
     # Exibe o DataFrame com os eletrodomésticos selecionados
