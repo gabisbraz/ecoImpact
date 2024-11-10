@@ -66,7 +66,7 @@ def eletrodomesticos_page():
     if len(df_index.get("selection", {}).get("rows", [])) != 0:
         # Captura as linhas selecionadas no df_index
         selected_rows = df_index.get("selection", {}).get("rows", [])
-        df_selected = df.iloc[selected_rows]
+        df_selected = df_index.iloc[selected_rows]
 
         with col_btn[2]:
             if st.button(

@@ -31,6 +31,8 @@ elif page == "Visão Geral":
     analise_page(df, key_aux="1")
 
 elif page == "Análise Personalizada":
+    st.write("\n")
+    st.write("\n")
     df = eletrodomesticos_page()
 
     if st.session_state.get("btn_get_analise", False) and not df.empty:
