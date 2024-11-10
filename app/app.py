@@ -28,7 +28,7 @@ elif page == "Sobre o Projeto":
 
 elif page == "Visão Geral":
     df, _ = get_data()
-    analise_page(df)
+    analise_page(df, key_aux="1")
 
 elif page == "Análise Personalizada":
     df = eletrodomesticos_page()
@@ -46,4 +46,4 @@ elif page == "Análise Personalizada":
 
     if st.session_state.get("ver_relatorio", False) and not df.empty:
         st.markdown("---")
-        analise_page(df)
+        analise_page(df, key_aux="2")

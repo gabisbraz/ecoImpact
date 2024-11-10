@@ -13,7 +13,7 @@ from utils.create_card import Cards
 from utils.dataframe_exp import dataframe_explorer
 
 
-def analise_page(df):
+def analise_page(df, key_aux):
 
     def generate_google_link(marca, modelo):
         query = f"{marca} {modelo}"
@@ -71,7 +71,9 @@ def analise_page(df):
         df["LINK"] = df.apply(
             lambda row: generate_google_link(row["Marca"], row["Modelo"]), axis=1
         )
-        filtered_df = dataframe_explorer(df, case=False, key="data_geral_mult")
+        filtered_df = dataframe_explorer(
+            df, case=False, key=f"data_geral_mult_{key_aux}"
+        )
         st.dataframe(
             filtered_df,
             use_container_width=True,
@@ -79,7 +81,7 @@ def analise_page(df):
             column_config={
                 "LINK": st.column_config.LinkColumn("LINK", display_text="Saiba Mais"),
             },
-            key="data_geral1",
+            key=f"{key_aux}_data_geral1",
         )
 
     st.write("\n")
@@ -139,7 +141,9 @@ def analise_page(df):
         }
 
         # Exibindo o gráfico
-        st_echarts(options=options, height="360px", width="105%", key="chart_top_10")
+        st_echarts(
+            options=options, height="360px", width="105%", key=f"{key_aux}_chart_top_10"
+        )
 
     with cols[1]:
         # Contar a distribuição dos tipos de gás
@@ -176,7 +180,7 @@ def analise_page(df):
                 }
             ],
         }
-        st_echarts(options=options_pie, key="chart_gas")
+        st_echarts(options=options_pie, key=f"{key_aux}_chart_gas")
 
         # Texto a ser exibido no modal
         modal_text = """
@@ -265,7 +269,7 @@ def analise_page(df):
                 }
             ],
         }
-        st_echarts(options=options_fluido_pie, key="chart_fluidos")
+        st_echarts(options=options_fluido_pie, key=f"{key_aux}_chart_fluidos")
         # Texto a ser exibido no modal
         modal_text = """
         Aqui está uma explicação detalhada sobre cada um dos refrigerantes mencionados, incluindo os **malefícios** para o meio ambiente e a saúde, com foco no impacto ecológico.
@@ -350,7 +354,9 @@ def analise_page(df):
         def open_modal():
             st.markdown(modal_text)
 
-        if st.button("Entenda mais!", use_container_width=True, key="fluidos_modal"):
+        if st.button(
+            "Entenda mais!", use_container_width=True, key=f"{key_aux}_fluidos_modal"
+        ):
             open_modal()
 
     col1, col2 = st.columns([4, 1], vertical_alignment="bottom")
@@ -408,7 +414,9 @@ Alguns exemplos de aparelhos eletrodomésticos que recebem a etiqueta de eficiê
             st.markdown(modal_text)
 
         if st.button(
-            "Entenda mais!", use_container_width=True, key="classificacao_energ_modal"
+            "Entenda mais!",
+            use_container_width=True,
+            key=f"{key_aux}_classificacao_energ_modal",
         ):
             open_modal()
     # Criar abas usando streamlit_antd_components
@@ -445,13 +453,15 @@ Alguns exemplos de aparelhos eletrodomésticos que recebem a etiqueta de eficiê
         ],
     }
 
-    st_echarts(options=options, key="chart_clas_energ")
+    st_echarts(options=options, key=f"{key_aux}_chart_clas_energ")
 
     # Cria a coluna 'LINK' com os hyperlinks
     df_origem["LINK"] = df_origem.apply(
         lambda row: generate_google_link(row["Marca"], row["Modelo"]), axis=1
     )
-    filtered_df = dataframe_explorer(df_origem, case=False, key="data_clas_energ_mult")
+    filtered_df = dataframe_explorer(
+        df_origem, case=False, key=f"{key_aux}_data_clas_energ_mult"
+    )
     st.dataframe(
         filtered_df,
         use_container_width=True,
@@ -459,5 +469,5 @@ Alguns exemplos de aparelhos eletrodomésticos que recebem a etiqueta de eficiê
         column_config={
             "LINK": st.column_config.LinkColumn("LINK", display_text="Saiba Mais"),
         },
-        key="data_clas_energ",
+        key=f"{key_aux}_data_clas_energ",
     )
