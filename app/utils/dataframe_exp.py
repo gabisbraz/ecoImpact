@@ -11,7 +11,7 @@ from pandas.api.types import (
 
 
 def dataframe_explorer(
-    df: pd.DataFrame, case: bool = True, key: str = "sel"
+    df: pd.DataFrame, case: bool = True, key: str = ""
 ) -> pd.DataFrame:
     """
     Adds a UI on top of a dataframe to let viewers filter columns
